@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom'
 import {
   Collapse,
   Navbar,
@@ -12,9 +13,9 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
-import{withRouter} from 'react-router-dom'
 
- class Header extends React.Component {
+
+class Header extends React.Component {
   constructor(props) {
     super(props);
 
@@ -27,7 +28,7 @@ import{withRouter} from 'react-router-dom'
 
   logout() {
     localStorage.clear();
-    // this.props.history.push('/')
+    this.props.history.push('/')
   }
 
   toggle() {
@@ -37,57 +38,58 @@ import{withRouter} from 'react-router-dom'
   }
 
   render() {
-    console.log(localStorage.getItem('isLoggedIn'))
+    var SignupCheck
     var LoginCheck
     if (localStorage.getItem('isLoggedIn')) {
       LoginCheck =
-        <NavItem>
-          <NavLink href='/' onClick={this.logout}>Logout</NavLink>
+        <NavItem onClick={this.logout}>
+          <NavLink >Logout</NavLink>
         </NavItem>
-	SignupCheck=
-              <NavItem>
-                <NavLink href="/signup">Sign Up</NavLink>
-              </NavItem>
+      SignupCheck =<div></div>
+
     } else {
       LoginCheck =
         <NavItem>
           <NavLink href="/login">Login</NavLink>
         </NavItem>
-	SignupCheck=
-              <div></div>
-
-    return (
-      <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">mpbinar</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              {LoginCheck}
-	      {SignupCheck}
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    <NavLink href="/user">Users</NavLink>
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </div>
-    );
+      SignupCheck = 
+      <NavItem>
+      <NavLink href="/signup">Sign Up</NavLink>
+    </NavItem>
   }
-}
+
+      return (
+        <div>
+          <Navbar color="light" light expand="md">
+            <NavbarBrand href="/">mpbinar</NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
+                {LoginCheck}
+                {SignupCheck}
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav caret>
+                    Options
+                </DropdownToggle>
+                  <DropdownMenu right>
+                    <DropdownItem>
+                      <NavLink href="/user">Users</NavLink>
+                    </DropdownItem>
+                    <DropdownItem>
+                      Option 2
+                  </DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem>
+                      Reset
+                  </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              </Nav>
+            </Collapse>
+          </Navbar>
+        </div>
+      );
+    }
+  }
 
 export default withRouter(Header)

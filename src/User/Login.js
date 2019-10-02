@@ -1,8 +1,7 @@
 import React from 'react'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Redirect } from 'react-router-dom'
-import store from 'store'
-import isLoggedIn from '../helper/isLoggedIn'
+
 export default class Login extends React.Component {
   constructor(props) {
     super(props)
@@ -61,7 +60,7 @@ export default class Login extends React.Component {
   }
 
   render() {
-    if (isLoggedIn() || this.state.redirect) {
+    if (localStorage.getItem('isLoggedIn')|| this.state.redirect) {
       return (
         <Redirect to={'/'} />
       )
