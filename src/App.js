@@ -5,6 +5,8 @@ import SignUp from './User/SignUp.js'
 import UserShow from './User/UserShow.js'
 import UserAll from './User/UserAll.js'
 import Header from './Header.js'
+import ProductForm from './Product/ProductForm.js';
+import ProductForm2 from './Product/ProductForm2.js';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route exact path='/signup' component={SignUp}></Route>
         <Route exact path='/user/:id' component={UserShow}></Route>
         <Route exact path='/user' component={UserAll}></Route>
+        <Route exact path='/product/form' component={ProductForm}></Route>
+        <Route exact path='/product/form2' component={ProductForm2}></Route>
 
       </Router>
     </div>

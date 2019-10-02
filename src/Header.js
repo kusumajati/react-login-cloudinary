@@ -15,7 +15,7 @@ import {
 } from 'reactstrap';
 
 
-class Header extends React.Component {
+ class Header extends React.Component {
   constructor(props) {
     super(props);
 
@@ -92,4 +92,5 @@ class Header extends React.Component {
     }
   }
 
-export default withRouter(Header)
+
+  export default  withRouter(Header)

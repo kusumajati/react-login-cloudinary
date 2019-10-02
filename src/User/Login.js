@@ -18,7 +18,8 @@ export default class Login extends React.Component {
 
   }
 
-  login() {
+  login(event) {
+    event.preventDefault()
     fetch('https://mpbinarsiang.herokuapp.com/user/login', {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
@@ -77,7 +78,7 @@ export default class Login extends React.Component {
               <Label for="examplePassword" className="mr-sm-2">Password</Label>
               <Input onChange={this.onChangePassword} type="password" name="password" id="examplePassword" placeholder="don't tell!" />
             </FormGroup>
-            <Button onClick={this.login}>Submit</Button>
+            <Button type='input' onClick={this.login}>Submit</Button>
           </Form>
         </div>
       )
